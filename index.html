@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BancoCaio - Internet Banking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=600&fit=crop" alt="Banco Digital">
+                <div class="carousel-caption">
+                    <h3>Banco 100% Digital</h3>
+                    <p>Gerencie suas finanças de onde estiver</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="Segurança">
+                <div class="carousel-caption">
+                    <h3>Segurança Garantida</h3>
+                    <p>Proteção avançada para seus dados</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop" alt="Investimentos">
+                <div class="carousel-caption">
+                    <h3>Investimentos Inteligentes</h3>
+                    <p>Faça seu dinheiro render mais</p>
+                </div>
+            </div>
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="login-container">
+        <div class="logo-container">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="60" height="60" rx="12" fill="#0066CC"/>
+                    <path d="M20 25H40V35H20V25Z" fill="white"/>
+                    <path d="M25 20H35V40H25V20Z" fill="white" opacity="0.7"/>
+                    <circle cx="30" cy="30" r="4" fill="#0066CC"/>
+                </svg>
+            </div>
+            <h1>BancoCaio</h1>
+            <p class="subtitle">Internet Banking</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">CPF ou Usuário</label>
+                <div class="input-wrapper">
+                    <i data-lucide="user" class="input-icon"></i>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Digite seu CPF ou usuário"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+                <div class="error-message" id="usernameError">Campo obrigatório</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="input-wrapper">
+                    <i data-lucide="lock" class="input-icon"></i>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <span class="password-toggle" id="togglePassword">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </span>
+                </div>
+                <div class="strength-meter" id="strengthMeter">
+                    <div class="strength-meter-fill" id="strengthFill"></div>
+                </div>
+                <div class="error-message" id="passwordError">Campo obrigatório</div>
+            </div>
+
+            <div class="remember-forgot">
+                <label class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Lembrar meu usuário</span>
+                </label>
+                <a href="#" class="forgot-password" id="forgotPassword">Esqueci minha senha</a>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <span class="btn-text">Acessar minha conta</span>
+                <div class="spinner"></div>
+            </button>
+        </form>
+
+        <div class="register-link">
+            Ainda não é cliente? <a href="#" id="registerLink">Abrir conta</a>
+        </div>
+
+        <div class="security-info">
+            <i data-lucide="shield-check"></i>
+            <p>Ambiente seguro e criptografado</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" id="modalClose">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal" id="modalButton">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/script.js"></script>
+</body>
+</html> 
