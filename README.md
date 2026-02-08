@@ -12,19 +12,19 @@ O sistema simula um ambiente de login bancário onde o usuário pode fazer auten
 
 ## Análise das Metas de Usabilidade
 
-**Fácil de lembrar como usar**
+**Fácil de lembrar como usar**:
 O sistema usa um padrão familiar de login (CPF/usuário + senha) que qualquer pessoa já conhece de outros sites. Incluí também a opção "lembrar meu usuário" para facilitar acessos futuros.
 
-**Fácil de entender**
+**Fácil de entender**:
 A interface é simples e direta. Os campos estão claramente identificados, tem placeholders explicativos e ícones que ajudam a entender o que vai em cada campo. Quando o usuário erra algo, aparece mensagem explicando o problema.
 
-**Útil**
+**Útil**:
 O sistema cumpre sua função de autenticar usuários de forma prática. Tem validação dos dados, mostra a força da senha e dá feedback sobre o que está acontecendo (se login foi aceito ou negado).
 
-**Seguro (percepção do usuário)**
+**Seguro (percepção do usuário)**:
 Usei visual de banco real com cores profissionais (azul), ícone de cadeado, botão para mostrar/esconder senha e mensagem de "ambiente seguro" no rodapé. Isso passa mais confiança para quem acaba usando.
 
-**Eficiente**
+**Eficiente**:
 O login é rápido, só precisa preencher dois campos e clicar em um botão (ou apertar Enter). As validações acontecem na hora e o feedback é imediato. Adicionei navegação por teclado para ser mais ágil ainda.
 
 ## Análise das Metas de Experiência
