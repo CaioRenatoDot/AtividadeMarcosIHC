@@ -4,115 +4,80 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-## 📋 Sobre o Projeto
+## Descrição do Projeto
 
-Sistema de login para Internet Banking desenvolvido como atividade prática da disciplina de **Interface Humano-Computador (IHC)**. O projeto demonstra a aplicação de princípios de usabilidade, design de interfaces e experiência do usuário em um contexto bancário.
+Este projeto é um sistema de login para um banco fictício chamado BancoCaio, desenvolvido como atividade da disciplina de Interface Humano-Computador. O objetivo foi criar uma interface funcional aplicando conceitos de usabilidade e experiência do usuário.
 
-## 🎯 Objetivos de IHC
+O sistema simula um ambiente de login bancário onde o usuário pode fazer autenticação usando CPF/usuário e senha. Todo o funcionamento é local, sem necessidade de internet ou banco de dados real.
 
-Este projeto foi desenvolvido aplicando os seguintes conceitos de IHC:
+## Análise das Metas de Usabilidade
 
-### Usabilidade
-- **Eficiência**: Interface limpa e direta, minimizando o número de cliques
-- **Facilidade de Aprendizado**: Design intuitivo que não requer treinamento
-- **Memorabilidade**: Padrões visuais consistentes e familiares
-- **Prevenção de Erros**: Validação em tempo real dos campos
-- **Satisfação**: Interface agradável e moderna
+**Fácil de lembrar como usar**
+O sistema usa um padrão familiar de login (CPF/usuário + senha) que qualquer pessoa já conhece de outros sites. Incluí também a opção "lembrar meu usuário" para facilitar acessos futuros.
 
-### Acessibilidade
-- Contraste adequado entre cores
-- Feedback visual para todas as ações
-- Suporte a navegação por teclado (Enter, ESC)
-- Mensagens de erro claras e específicas
-- Ícones descritivos e intuitivos
+**Fácil de entender**
+A interface é simples e direta. Os campos estão claramente identificados, tem placeholders explicativos e ícones que ajudam a entender o que vai em cada campo. Quando o usuário erra algo, aparece mensagem explicando o problema.
 
-### Design Visual
-- Esquema de cores profissional (azul corporativo)
-- Tipografia moderna e legível
-- Espaçamento adequado entre elementos
-- Animações suaves
-- Responsividade para diferentes dispositivos
+**Útil**
+O sistema cumpre sua função de autenticar usuários de forma prática. Tem validação dos dados, mostra a força da senha e dá feedback sobre o que está acontecendo (se login foi aceito ou negado).
 
-## 🚀 Funcionalidades
+**Seguro (percepção do usuário)**
+Usei visual de banco real com cores profissionais (azul), ícone de cadeado, botão para mostrar/esconder senha e mensagem de "ambiente seguro" no rodapé. Isso passa mais confiança para quem acaba usando.
 
-### Autenticação
-- ✅ Sistema de login com validação
-- ✅ Opção "Lembrar usuário"
-- ✅ Visualização de senha (toggle)
-- ✅ Medidor de força da senha
-- ✅ Feedback visual de erros
+**Eficiente**
+O login é rápido, só precisa preencher dois campos e clicar em um botão (ou apertar Enter). As validações acontecem na hora e o feedback é imediato. Adicionei navegação por teclado para ser mais ágil ainda.
 
-### Interface
-- ✅ Carrossel de imagens informativo
-- ✅ Modal de feedback para ações
-- ✅ Animações e transições suaves
-- ✅ Design responsivo
+## Análise das Metas de Experiência
 
-### Validações
-- ✅ Validação em tempo real
-- ✅ Mensagens de erro específicas
-- ✅ Indicadores visuais de sucesso/erro
-- ✅ Análise de força da senha
+Escolhi trabalhar com 5 metas de experiência:
 
-## 🖥️ Tecnologias Utilizadas
+**Esteticament­e apreciável**
+Fiz um design limpo e moderno inspirado em bancos reais, como por exemplo o da Nubank. A tipografia é moderna (fonte Inter do Google Fonts) e o layout é organizado e agradável.
 
-- **HTML5**: Estrutura semântica
-- **CSS3**: Estilização e animações
-- **JavaScript ES6**: Lógica e interatividade
-- **Google Fonts**: Tipografia (Inter)
-- **Lucide Icons**: Biblioteca de ícones
-- **LocalStorage**: Persistência de dados
+**Agradável**
+A experiência de usar é tranquila. As animações são suaves, nada é muito brusco ou irritante. O feedback das ações é discreto mas claro. Procurei fazer algo que não canse o usuário.
 
-## 📁 Estrutura do Projeto
+**Satisfatório**
+Quando o login funciona, tem um feedback positivo claro. Quando tem erro, a mensagem explica o que fazer para corrigir. O medidor de força da senha também ajuda o usuário a se sentir no controle.
 
-```
-bancocaio/
-│
-├── index.html          
-├── css/
-│   └── style.css     
-├── js/
-│   └── script.js      
-└── README.md          
-```
+**Emocionalment­e adequado**
+Mantive um tom sério e profissional, como espera-se de um banco. Não usei elementos muito infantis ou descontraídos demais. As cores transmitem confiança e estabilidade.
 
-## 🎨 Paleta de Cores
+**Eficiente** (também como experiência)
+Não tem burocracia desnecessária. O usuário consegue fazer o que precisa rapidamente sem ficar perdido ou ter que clicar em muitas coisas.
 
-| Cor | Hex | Uso |
-|-----|-----|-----|
-| Azul Principal | `#0066CC` | Botões, títulos, ícones |
-| Azul Escuro | `#004999` | Gradiente de fundo |
+## Tecnologias Utilizadas
 
-## 💡 Princípios de IHC Aplicados
+- **HTML5**: estrutura da página
+- **CSS3**: estilização e animações
+- **JavaScript**: lógica do login, validações e interatividade
+- **Google Fonts**: fonte Inter
+- **Lucide Icons**: ícones da interface
+- **LocalStorage**: para salvar a opção "lembrar usuário"
 
-O sistema é totalmente responsivo e se adapta a diferentes tamanhos de tela:
+## Instruções de Execução
 
-- **Desktop**: Layout com carrossel lateral
-- **Tablet**: Layout adaptado
-- **Mobile**: Interface otimizada para toque
+1. Baixe ou clone o repositório
+2. Abra o arquivo `index.html` no navegador (Chrome, Firefox, Edge, etc)
+3. O sistema vai carregar direto, não precisa instalar nada
 
-## 🚦 Como Executar
+**Para testar o login:**
+- Os usuários válidos estão definidos no arquivo `js/script.js`
+- Você pode usar qualquer CPF/usuário e senha cadastrados no código
+- Ou testar com dados inválidos para ver as mensagens de erro
 
-1. Clone ou baixe o projeto
-2. Abra o arquivo `index.html` em um navegador moderno
-3. Use as credenciais de teste fornecidas no arquivo **script.js**
-4. Explore as funcionalidades
+**Funcionalidades que você pode estar testando:**
+- Validação dos campos vazios
+- Feedback de erro quando usuário/senha estão incorretos
+- Opção de mostrar/esconder senha (clique no ícone do olho)
+- Medidor de força da senha em tempo real
+- Checkbox "lembrar meu usuário"
+- Navegação por teclado (Enter para fazer login, ESC para fechar mensagens)
 
-Não é necessário servidor web, apenas abrir o arquivo HTML diretamente, pois a persistencia é feita com LocalStorage.
+**Observação:** O sistema funciona totalmente offline. Não precisa de internet nem servidor. É só abrir o HTML e usar.
 
-## 🎓 Aprendizados
+---
 
-Este projeto demonstra:
-- Design centrado no usuário
-- Aplicação prática de princípios de IHC
-- Desenvolvimento de interfaces acessíveis
-- Importância do feedback visual
-- Validação e tratamento de erros
-- Design responsivo
+**Link do projeto no GitHub Pages:** https://caiorenatodot.github.io/AtividadeMarcosIHC/
 
-
-Projeto desenvolvido para a disciplina de Interface Humano-Computador (IHC)
-
-Obs: Este projeto é de uso educacional. Podem usar livremente!
-
-Link do Github Pages: https://caiorenatodot.github.io/AtividadeMarcosIHC/
+Projeto desenvolvido para a disciplina de Interface Humano-Computador.
