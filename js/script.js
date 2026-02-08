@@ -207,7 +207,7 @@ loginForm.addEventListener('submit', async (e) => {
         showModal(
             'success',
             'Login realizado com sucesso!',
-            'Bem-vindo ao BancoCaio. Em um sistema real, vce seria redirecionado para sua área do cliente.'
+            'Bem-vindo ao BancoCaio. Em um sistema real, você seria redirecionado para sua área do cliente.'
         );
         
         const resetForm = () => {
