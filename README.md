@@ -114,3 +114,5 @@ Este projeto demonstra:
 Projeto desenvolvido para a disciplina de Interface Humano-Computador (IHC)
 
 Obs: Este projeto é de uso educacional. Podem usar livremente!
+
+Link do Github Pages: https://caiorenatodot.github.io/AtividadeMarcosIHC/
