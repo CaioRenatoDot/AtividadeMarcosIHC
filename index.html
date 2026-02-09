@@ -3,87 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BancoCaio - Internet Banking</title>
+    <title>BancoCaio - Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo-container">
-            <div class="logo">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="60" height="60" rx="12" fill="#0066CC"/>
-                    <path d="M20 25H40V35H20V25Z" fill="white"/>
-                    <path d="M25 20H35V40H25V20Z" fill="white" opacity="0.7"/>
-                    <circle cx="30" cy="30" r="4" fill="#0066CC"/>
-                </svg>
+      <!-- TESTE DE CARROSSEL -->
+    <div class="main-container">
+        <div class="carousel-section">
+            <div class="carousel">
+                <div class="carousel-slide active">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=1000&fit=crop" alt="Edifício moderno">
+                    <div class="carousel-overlay">
+                        <h2>Gestão financeira completa para sua empresa</h2>
+                        <p>Controle total do seu negócio em um só lugar</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=1000&fit=crop" alt="Análise de dados">
+                    <div class="carousel-overlay">
+                        <h2>Tecnologia que impulsiona resultados</h2>
+                        <p>Soluções inteligentes para o crescimento do seu negócio</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=1000&fit=crop" alt="Equipe trabalhando">
+                    <div class="carousel-overlay">
+                        <h2>Simplifique suas operações financeiras</h2>
+                        <p>Menos burocracia, mais eficiência para sua equipe</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=1000&fit=crop" alt="Dashboard">
+                    <div class="carousel-overlay">
+                        <h2>Relatórios e insights em tempo real</h2>
+                        <p>Tome decisões com dados precisos e atualizados</p>
+                    </div>
+                </div>
             </div>
-            <h1>BancoCaio</h1>
-            <p class="subtitle">Internet Banking</p>
+            
+            <div class="carousel-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
         </div>
 
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">CPF ou Usuário</label>
-                <div class="input-wrapper">
-                    <i data-lucide="user" class="input-icon"></i>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        placeholder="Digite seu CPF ou usuário"
-                        autocomplete="username"
-                        required
-                    >
+        <div class="login-section">
+            <div class="login-container">
+                <div class="logo-container">
+                    <div class="logo">
+                        <svg width="50" height="50" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#0A2E5C"/>
+                            <path d="M20 25H40V35H20V25Z" fill="white"/>
+                            <path d="M25 20H35V40H25V20Z" fill="white" opacity="0.7"/>
+                            <circle cx="30" cy="30" r="4" fill="#0A2E5C"/>
+                        </svg>
+                    </div>
+                    <h1>BancoCaio</h1>
+                    <p class="subtitle">Internet Banking para Empresas</p>
                 </div>
-                <div class="error-message" id="usernameError">Campo obrigatório</div>
-            </div>
 
-            <div class="form-group">
-                <label for="password">Senha</label>
-                <div class="input-wrapper">
-                    <i data-lucide="lock" class="input-icon"></i>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        placeholder="Digite sua senha"
-                        autocomplete="current-password"
-                        required
-                    >
-                    <span class="password-toggle" id="togglePassword">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                    </span>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Informe seu CPF <i data-lucide="help-circle" class="help-icon"></i></label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                placeholder="000.000.000-00"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+                        <div class="error-message" id="usernameError">Campo obrigatório</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <span class="password-toggle" id="togglePassword">
+                                <i data-lucide="eye"></i>
+                            </span>
+                        </div>
+                        <div class="error-message" id="passwordError">Campo obrigatório</div>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="loginBtn">
+                        <span class="btn-text">Acessar</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+
+                <div class="additional-links">
+                    <a href="#" class="link" id="forgotPassword">Esqueci minha senha</a>
+                    <div class="divider"></div>
+                    <p class="register-text">Ainda não tem uma conta do BancoCaio Empresas? <a href="#" id="registerLink">Abrir agora</a></p>
                 </div>
-                <div class="error-message" id="passwordError">Campo obrigatório</div>
+
+                <div class="security-info">
+                    <i data-lucide="shield-check"></i>
+                    <p>Conexão segura e criptografada</p>
+                </div>
             </div>
-
-            <div class="remember-forgot">
-                <label class="remember-me">
-                    <input type="checkbox" id="rememberMe">
-                    <span>Lembrar meu usuário</span>
-                </label>
-                <a href="#" class="forgot-password" id="forgotPassword">Esqueci minha senha</a>
-            </div>
-
-            <button type="submit" class="btn-login" id="loginBtn">
-                <span class="btn-text">Acessar minha conta</span>
-                <div class="spinner"></div>
-            </button>
-        </form>
-
-        <div class="register-link">
-            Ainda não é cliente? <a href="#" id="registerLink">Abrir conta</a>
-        </div>
-
-        <div class="security-info">
-            <i data-lucide="shield-check"></i>
-            <p>Ambiente seguro e criptografado</p>
         </div>
     </div>
 
+    <!-- MODALLLL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <div class="modal-header">

@@ -12,9 +12,6 @@ const togglePassword = document.getElementById('togglePassword');
 const loginBtn = document.getElementById('loginBtn');
 const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
-const strengthMeter = document.getElementById('strengthMeter');
-const strengthFill = document.getElementById('strengthFill');
-const rememberMe = document.getElementById('rememberMe');
 const forgotPassword = document.getElementById('forgotPassword');
 const registerLink = document.getElementById('registerLink');
 
@@ -25,6 +22,7 @@ const modalIcon = document.getElementById('modalIcon');
 const modalClose = document.getElementById('modalClose');
 const modalButton = document.getElementById('modalButton');
 
+// Funções de MOdal
 function showModal(type, title, message) {
     modalTitle.textContent = title;
     modalMessage.textContent = message;
@@ -63,10 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarousel();
 });
 
+// Carrousel 
 function initCarousel() {
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
+    
+    if (slides.length === 0) return;
+    
     let currentSlide = 0;
+    let autoplayInterval;
 
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
@@ -81,60 +84,44 @@ function initCarousel() {
         showSlide(currentSlide);
     }
 
-    setInterval(nextSlide, 5000);
+    function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+
+    startAutoplay();
 
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
             currentSlide = index;
             showSlide(currentSlide);
+            stopAutoplay();
+            startAutoplay(); 
         });
     });
+
+    const carouselSection = document.querySelector('.carousel-section');
+    if (carouselSection) {
+        carouselSection.addEventListener('mouseenter', stopAutoplay);
+        carouselSection.addEventListener('mouseleave', startAutoplay);
+    }
 }
 
-window.addEventListener('load', () => {
-    const savedUsername = localStorage.getItem('savedUsername');
-    if (savedUsername) {
-        usernameInput.value = savedUsername;
-        rememberMe.checked = true;
-    }
-});
-
 togglePassword.addEventListener('click', function() {
+    const eyeIcon = this.querySelector('i');
+    
     if (passwordInput.getAttribute('type') === 'password') {
         passwordInput.setAttribute('type', 'text');
-        this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+        eyeIcon.setAttribute('data-lucide', 'eye-off');
     } else {
         passwordInput.setAttribute('type', 'password');
-        this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+        eyeIcon.setAttribute('data-lucide', 'eye');
     }
-});
-
-passwordInput.addEventListener('input', () => {
-    const password = passwordInput.value;
     
-    if (password.length === 0) {
-        strengthMeter.classList.remove('show');
-        return;
-    }
-
-    strengthMeter.classList.add('show');
-    
-    let strength = 0;
-    if (password.length >= 6) strength++;
-    if (password.length >= 10) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[^A-Za-z0-9]/.test(password)) strength++;
-
-    strengthFill.className = 'strength-meter-fill';
-    
-    if (strength <= 2) {
-        strengthFill.classList.add('strength-weak');
-    } else if (strength <= 3) {
-        strengthFill.classList.add('strength-medium');
-    } else {
-        strengthFill.classList.add('strength-strong');
-    }
+    lucide.createIcons();
 });
 
 usernameInput.addEventListener('input', () => {
@@ -192,27 +179,23 @@ loginForm.addEventListener('submit', async (e) => {
     loginBtn.classList.add('loading');
     loginBtn.disabled = true;
 
+    // Fingir API Call
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     if (validUsers[username] && validUsers[username] === password) {
         loginBtn.classList.remove('loading');
         loginBtn.disabled = false;
         
-        if (rememberMe.checked) {
-            localStorage.setItem('savedUsername', username);
-        } else {
-            localStorage.removeItem('savedUsername');
-        }
+        localStorage.setItem('lastUsername', username);
 
         showModal(
             'success',
             'Login realizado com sucesso!',
-            'Bem-vindo ao BancoCaio. Em um sistema real, você seria redirecionado para sua área do cliente.'
+            'Bem-vindo ao BancoCaio Empresas. Você será redirecionado para sua área do cliente.'
         );
         
         const resetForm = () => {
             loginForm.reset();
-            strengthMeter.classList.remove('show');
             usernameInput.classList.remove('success');
             passwordInput.classList.remove('success');
         };
@@ -231,13 +214,19 @@ loginForm.addEventListener('submit', async (e) => {
 
         if (!validUsers[username]) {
             usernameInput.classList.add('error');
-            usernameError.textContent = 'Usuário não encontrado';
+            usernameError.textContent = 'CPF não encontrado';
             usernameError.classList.add('show');
         } else {
             passwordInput.classList.add('error');
             passwordError.textContent = 'Senha incorreta';
             passwordError.classList.add('show');
         }
+
+        showModal(
+            'error',
+            'Erro no login',
+            'Verifique suas credenciais e tente novamente.'
+        );
     }
 });
 
@@ -246,7 +235,7 @@ forgotPassword.addEventListener('click', (e) => {
     showModal(
         'info',
         'Recuperação de Senha',
-        'Em um sistema real, voce receberia instruções por e-mail.'
+        'Você receberia um link de recuperação no e-mail cadastrado.'
     );
 });
 
@@ -255,7 +244,7 @@ registerLink.addEventListener('click', (e) => {
     showModal(
         'info',
         'Abertura de Conta',
-        'Em um sistema real, você seria direcionado para o formulário de cadastro. Use as credenciais de teste fornecidas para explorar o sistema.'
+        'Redirecionamento para Registro...'
     );
 });
 
@@ -268,5 +257,12 @@ document.addEventListener('keypress', (e) => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
         closeModal();
+    }
+});
+
+window.addEventListener('load', () => {
+    const savedUsername = localStorage.getItem('lastUsername');
+    if (savedUsername) {
+        usernameInput.value = savedUsername;
     }
 });

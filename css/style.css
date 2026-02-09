@@ -4,39 +4,57 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0066CC 0%, #004999 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    gap: 40px;
+:root {
+    --primary-blue: #0A2E5C;
+    --primary-blue-dark: #082544;
+    --primary-blue-light: #0D3A6F;
+    --accent-blue: #1E5A9C;
+    --background-dark: #0F1419;
+    --surface-dark: #1A1F2E;
+    --surface-light: #242936;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0AEC0;
+    --border-color: #2D3748;
+    --success: #10B981;
+    --error: #EF4444;
 }
 
-.carousel-container {
-    width: 100%;
-    max-width: 500px;
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    background: var(--background-dark);
+    overflow-x: hidden;
+}
+
+.main-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/*  CARROUSSEL CASO DÊ ERRADO AQUI!  */
+
+.carousel-section {
+    flex: 1;
+    position: relative;
+    background: var(--background-dark);
     display: none;
 }
 
 .carousel {
     position: relative;
     width: 100%;
-    height: 500px;
-    background: white;
-    border-radius: 16px;
+    height: 100%;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-slide {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .carousel-slide.active {
@@ -47,36 +65,40 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.7);
 }
 
-.carousel-caption {
+.carousel-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 60px 50px;
+    background: linear-gradient(to top, rgba(10, 46, 92, 0.95) 0%, rgba(10, 46, 92, 0.7) 40%, transparent 100%);
     color: white;
-    padding: 40px 30px 30px;
 }
 
-.carousel-caption h3 {
-    font-size: 24px;
-    margin-bottom: 8px;
-    font-weight: 600;
+.carousel-overlay h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
 }
 
-.carousel-caption p {
-    font-size: 16px;
-    opacity: 0.9;
+.carousel-overlay p {
+    font-size: 18px;
+    opacity: 0.95;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 .carousel-indicators {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 30px;
+    left: 50px;
     display: flex;
-    gap: 8px;
+    gap: 10px;
     z-index: 10;
 }
 
@@ -84,148 +106,155 @@ body {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.4);
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.4s ease;
 }
 
 .indicator.active {
-    width: 24px;
+    width: 32px;
     border-radius: 4px;
     background: white;
 }
 
-@media (min-width: 1024px) {
-    .carousel-container {
-        display: block;
-    }
+
+.login-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-dark);
+    padding: 40px 20px;
 }
 
 .login-container {
-    background: white;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
 }
 
 .logo-container {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 48px;
 }
 
 .logo {
-    margin-bottom: 15px;
+    margin-bottom: 24px;
     display: flex;
     justify-content: center;
 }
 
 h1 {
-    color: #0066CC;
-    font-size: 32px;
-    margin-bottom: 5px;
-    text-align: center;
+    color: var(--text-primary);
+    font-size: 38px;
+    margin-bottom: 8px;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
 }
 
 .subtitle {
-    color: #666;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 30px;
+    color: var(--accent-blue);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .form-group {
-    margin-bottom: 25px;
-    position: relative;
+    margin-bottom: 24px;
 }
 
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
     font-weight: 600;
     font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+.help-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-secondary);
+    cursor: help;
 }
 
 .input-wrapper {
     position: relative;
 }
 
-.input-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #0066CC;
-    width: 20px;
-    height: 20px;
-}
-
 input {
     width: 100%;
-    padding: 15px 15px 15px 50px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    padding: 16px 18px;
+    background: var(--surface-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
     font-size: 16px;
+    color: var(--text-primary);
     transition: all 0.3s ease;
-    background: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+    font-weight: 400;
 }
 
 input:focus {
     outline: none;
-    border-color: #0066CC;
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    border-color: var(--primary-blue);
+    background: var(--surface-light);
+    box-shadow: 0 0 0 4px rgba(10, 46, 92, 0.1);
 }
 
 input.error {
-    border-color: #dc3545;
+    border-color: var(--error);
     animation: shake 0.5s;
 }
 
 input.success {
-    border-color: #28a745;
+    border-color: var(--success);
 }
 
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
 }
 
 .password-toggle {
     position: absolute;
-    right: 15px;
+    right: 18px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #999;
+    color: var(--text-secondary);
     transition: color 0.3s;
     user-select: none;
-    width: 20px;
-    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.password-toggle svg {
+.password-toggle i {
     width: 20px;
     height: 20px;
 }
 
 .password-toggle:hover {
-    color: #0066CC;
+    color: var(--primary-blue);
 }
 
 .error-message {
-    color: #dc3545;
+    color: var(--error);
     font-size: 13px;
-    margin-top: 5px;
+    margin-top: 8px;
     display: none;
     animation: fadeIn 0.3s;
+    font-weight: 500;
 }
 
 .error-message.show {
@@ -237,57 +266,27 @@ input.success {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    font-size: 14px;
-}
-
-.remember-me {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.remember-me input[type="checkbox"] {
-    width: auto;
-    margin-right: 8px;
-    cursor: pointer;
-    padding: 0;
-}
-
-.forgot-password {
-    color: #0066CC;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.forgot-password:hover {
-    color: #004999;
-    text-decoration: underline;
-}
-
 .btn-login {
     width: 100%;
-    padding: 15px;
-    background: #0066CC;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-login:hover {
-    background: #0052a3;
+    background: linear-gradient(135deg, var(--primary-blue-light) 0%, var(--primary-blue) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+    box-shadow: 0 8px 20px rgba(10, 46, 92, 0.4);
 }
 
 .btn-login:active {
@@ -322,103 +321,69 @@ input.success {
     display: block;
 }
 
-.register-link {
-    text-align: center;
-    margin-top: 25px;
-    font-size: 14px;
-    color: #666;
+.additional-links {
+    margin-top: 36px;
 }
 
-.register-link a {
-    color: #0066CC;
+.link {
+    color: var(--accent-blue);
     text-decoration: none;
+    font-size: 14px;
     font-weight: 600;
+    display: inline-block;
+    transition: color 0.3s;
 }
 
-.register-link a:hover {
+.link:hover {
+    color: var(--primary-blue-light);
     text-decoration: underline;
 }
 
-.demo-credentials {
-    background: #f8f9fa;
-    border-left: 4px solid #0066CC;
-    padding: 15px;
-    margin-bottom: 25px;
-    border-radius: 5px;
-    font-size: 13px;
+.divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 28px 0;
 }
 
-.demo-credentials strong {
-    color: #0066CC;
-    display: block;
-    margin-bottom: 8px;
+.register-text {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-.demo-credentials code {
-    background: white;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
-    color: #333;
-    font-weight: 500;
+.register-text a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s;
 }
 
-.strength-meter {
-    height: 4px;
-    background: #e0e0e0;
-    border-radius: 2px;
-    margin-top: 8px;
-    overflow: hidden;
-    display: none;
-}
-
-.strength-meter.show {
-    display: block;
-}
-
-.strength-meter-fill {
-    height: 100%;
-    width: 0%;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
-
-.strength-weak { 
-    background: #dc3545; 
-    width: 33%; 
-}
-
-.strength-medium { 
-    background: #ffc107; 
-    width: 66%; 
-}
-
-.strength-strong { 
-    background: #28a745; 
-    width: 100%; 
+.register-text a:hover {
+    color: var(--primary-blue-light);
+    text-decoration: underline;
 }
 
 .security-info {
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #e0e0e0;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .security-info i {
-    width: 16px;
-    height: 16px;
-    color: #666;
+    width: 18px;
+    height: 18px;
+    color: var(--success);
 }
 
 .security-info p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 13px;
     margin: 0;
+    font-weight: 500;
 }
 
 .modal-overlay {
@@ -427,12 +392,12 @@ input.success {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(15, 20, 25, 0.85);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
 }
 
 .modal-overlay.show {
@@ -441,18 +406,19 @@ input.success {
 }
 
 .modal {
-    background: white;
+    background: var(--surface-dark);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     width: 90%;
-    max-width: 450px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 480px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
     animation: slideUp 0.3s;
 }
 
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -461,17 +427,17 @@ input.success {
 }
 
 .modal-header {
-    padding: 25px;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 28px;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
     position: relative;
 }
 
 .modal-icon {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -480,99 +446,181 @@ input.success {
 }
 
 .modal-icon i {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
 }
 
 .modal-icon.success {
-    background: #d4edda;
-    color: #28a745;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
 }
 
 .modal-icon.error {
-    background: #f8d7da;
-    color: #dc3545;
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--error);
 }
 
 .modal-icon.info {
-    background: #d1ecf1;
-    color: #0c5460;
+    background: rgba(10, 46, 92, 0.2);
+    color: var(--accent-blue);
 }
 
 .modal-header h2 {
-    color: #333;
-    font-size: 20px;
+    color: var(--text-primary);
+    font-size: 22px;
     margin: 0;
     flex: 1;
+    font-weight: 700;
 }
 
 .modal-close {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
-    color: #999;
+    padding: 6px;
+    color: var(--text-secondary);
     transition: color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 6px;
 }
 
 .modal-close i {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
 }
 
 .modal-close:hover {
-    color: #333;
+    color: var(--text-primary);
+    background: var(--border-color);
 }
 
 .modal-body {
-    padding: 25px;
+    padding: 28px;
 }
 
 .modal-body p {
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin: 0;
+    font-size: 15px;
 }
 
 .modal-footer {
-    padding: 20px 25px;
-    border-top: 1px solid #e0e0e0;
+    padding: 20px 28px;
+    border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: flex-end;
 }
 
 .btn-modal {
-    padding: 10px 24px;
-    background: #0066CC;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .btn-modal:hover {
-    background: #0052a3;
+    background: linear-gradient(135deg, var(--primary-blue-light) 0%, var(--primary-blue) 100%);
+    box-shadow: 0 4px 12px rgba(10, 46, 92, 0.3);
+}
+
+@media (min-width: 1024px) {
+    .carousel-section {
+        display: block;
+    }
+    
+    .login-section {
+        background: #F8FAFC;
+    }
+    
+    .login-section h1 {
+        color: var(--primary-blue-dark);
+    }
+    
+    .login-section .subtitle {
+        color: var(--accent-blue);
+    }
+    
+    .login-section label {
+        color: #1E293B;
+    }
+    
+    .login-section input {
+        background: white;
+        border-color: #E2E8F0;
+        color: #1E293B;
+    }
+    
+    .login-section input::placeholder {
+        color: #94A3B8;
+    }
+    
+    .login-section input:focus {
+        border-color: var(--primary-blue);
+        background: white;
+        box-shadow: 0 0 0 4px rgba(10, 46, 92, 0.08);
+    }
+    
+    .login-section .register-text {
+        color: #64748B;
+    }
+    
+    .login-section .security-info {
+        border-top-color: #E2E8F0;
+    }
+    
+    .login-section .security-info p {
+        color: #64748B;
+    }
+    
+    .login-section .divider {
+        background: #E2E8F0;
+    }
+    
+    .login-section .password-toggle {
+        color: #94A3B8;
+    }
+    
+    .login-section .password-toggle:hover {
+        color: var(--primary-blue);
+    }
+}
+
+@media (max-width: 1023px) {
+    .login-section {
+        padding: 60px 20px;
+    }
 }
 
 @media (max-width: 480px) {
     .login-container {
-        padding: 30px 20px;
+        max-width: 100%;
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 32px;
     }
 
-    .remember-forgot {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+    .subtitle {
+        font-size: 14px;
+        letter-spacing: 1.5px;
+    }
+
+    .carousel-overlay h2 {
+        font-size: 26px;
+    }
+
+    .carousel-overlay p {
+        font-size: 16px;
     }
 
     .modal {
@@ -580,10 +628,10 @@ input.success {
     }
 
     .modal-header {
-        padding: 20px;
+        padding: 24px;
     }
 
     .modal-body {
-        padding: 20px;
+        padding: 24px;
     }
 }
