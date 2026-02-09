@@ -70,7 +70,6 @@ Não tem burocracia desnecessária. O usuário consegue fazer o que precisa rapi
 - Validação dos campos vazios
 - Feedback de erro quando usuário/senha estão incorretos
 - Opção de mostrar/esconder senha (clique no ícone do olho)
-- Medidor de força da senha em tempo real
 - Checkbox "lembrar meu usuário"
 - Navegação por teclado (Enter para fazer login, ESC para fechar mensagens)
 
